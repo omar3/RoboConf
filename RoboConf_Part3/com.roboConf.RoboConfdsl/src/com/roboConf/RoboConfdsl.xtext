@@ -1,0 +1,153 @@
+grammar com.roboConf.RoboConfdsl with org.eclipse.xtext.common.Terminals
+
+generate roboConfdsl "http://www.roboConf.com/RoboConfdsl"
+
+Model:
+	//greetings+=Greeting*;
+	Features+=Feature*;
+	
+//Greeting:
+//	'Hello' name=ID '!';
+//	
+//HolloWorld:
+//	'hello people'
+//;
+
+Feature:
+	Component | Facet | Instance
+;
+//Component description
+
+Component:
+	 name=ID '{'
+		(Properties+=Propertie)* 
+		
+	'}'
+;
+
+Propertie: 
+	Installer | Children | Exports | Imports | Facet | Extends 
+	
+;
+
+
+// TODO Extend
+Extends:
+	('extends')? ext=ID ':' propertie = [Propertie]
+;
+
+
+Imports:
+	('imports:')? ID'.'ID (VIRGULE ID'.'ID)* POINT_VIRGULE
+;
+
+
+Exports:
+	('exports:')? ID ((VIRGULE) ID'=' INT )* POINT_VIRGULE
+;
+
+
+Children:
+	('children:')?  children = child POINT_VIRGULE
+;
+
+child:
+	expression (VIRGULE expression )* POINT_VIRGULE
+;
+
+expression:
+	ID
+;
+
+
+
+
+Installer:
+	'installer:' name=ID POINT_VIRGULE
+;
+
+
+
+//Facet description
+
+Facet:
+	'facet' namefacet=ID '{'
+		children = Children? &
+		exports = Exports? &
+		extends = Extends?
+	
+	'}'
+;
+
+
+// Instance Description
+
+Instance:
+	'instance of' nstanceName=[Component] '{'
+		(InstanceProperties+=InstancePropertie)*
+	'}'
+;
+
+InstancePropertie:
+	nameInst = Name &
+	count = Count? &
+	instance = Instances? 
+;
+
+Instances:
+	Instance
+;
+
+
+Count:
+	'count:' val = INT POINT_VIRGULE
+;
+
+
+Name:
+//	'name:'  (nameN+=ID)+  POINT_VIRGULE
+    'name:'   nameN=ID  POINT_VIRGULE
+;
+
+
+
+ECARule:
+	'Rule' eca_rule_name = [Component] '{' 
+		(ecaproperties += ECAProperty)*
+	'}' 
+;
+
+ECAProperty:
+	   elastic = Elastic
+	  & numInstances = NumInstances? 
+	  & minallowedinstances= MinAllowedInstances? 
+	  & maxallowedinstances= MaxAllowedInstances?
+;
+
+Elastic:
+	'elastic:'  ID POINT_VIRGULE
+;		
+
+NumInstances:
+	'numInstances:' INT POINT_VIRGULE
+;		
+
+MinAllowedInstances:
+	'minAllowedInstances:' INT POINT_VIRGULE
+;		
+
+MaxAllowedInstances:
+	'maxAllowedInstances:' INT POINT_VIRGULE
+;
+
+
+
+
+
+
+
+ 
+
+terminal ID : '^'?('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+terminal VIRGULE : ',';
+terminal POINT_VIRGULE : ';';

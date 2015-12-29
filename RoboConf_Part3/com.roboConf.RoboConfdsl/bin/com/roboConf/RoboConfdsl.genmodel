@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.roboConf.RoboConfdsl/src-gen" editDirectory="/com.roboConf.RoboConfdsl.edit/src"
+    editorDirectory="/com.roboConf.RoboConfdsl.editor/src" modelPluginID="com.roboConf.RoboConfdsl"
+    forceOverwrite="true" modelName="RoboConfdsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="com.roboConf.RoboConfdsl.edit"
+    editorPluginID="com.roboConf.RoboConfdsl.editor" runtimeVersion="2.8">
+  <genPackages prefix="RoboConfdsl" basePackage="com.roboConf" disposableProviderFactory="true"
+      ecorePackage="RoboConfdsl.ecore#/">
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//Model/Features"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Feature"/>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Component/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//Component/Properties"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Propertie"/>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Extends">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Extends/ext"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//Extends/propertie"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Children">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Children/children"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Installer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Installer/name"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Facet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Facet/namefacet"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//Facet/children"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Facet/exports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//Facet/extends"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Instance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//Instance/nstanceName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//Instance/InstanceProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//InstancePropertie">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//InstancePropertie/nameInst"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//InstancePropertie/count"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//InstancePropertie/instance"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Instances"/>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Count">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Count/val"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//Name">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//Name/nameN"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//ECARule">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//ECARule/eca_rule_name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RoboConfdsl.ecore#//ECARule/ecaproperties"/>
+    </genClasses>
+    <genClasses ecoreClass="RoboConfdsl.ecore#//ECAProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//ECAProperty/elastic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//ECAProperty/numInstances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//ECAProperty/minallowedinstances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RoboConfdsl.ecore#//ECAProperty/maxallowedinstances"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
