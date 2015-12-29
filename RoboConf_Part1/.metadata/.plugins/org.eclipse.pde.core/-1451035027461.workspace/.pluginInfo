@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bundle bundleID="719" localization="OSGI-INF/l10n/bundle" name="com.roboConf.RoboConfdsl.ui" project="com.roboConf.RoboConfdsl.ui" provider="My Company"/>
+	<bundle bundleID="717" localization="OSGI-INF/l10n/bundle" name="com.roboConf.RoboConfdsl" project="com.roboConf.RoboConfdsl" provider="My Company"/>
+	<bundle bundleID="718" localization="OSGI-INF/l10n/bundle" name="com.roboConf.RoboConfdsl.tests" project="com.roboConf.RoboConfdsl.tests" provider="My Company"/>
+</map>
