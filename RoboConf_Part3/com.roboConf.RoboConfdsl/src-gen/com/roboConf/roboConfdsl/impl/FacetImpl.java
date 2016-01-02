@@ -354,39 +354,4 @@ public class FacetImpl extends FeatureImpl implements Facet
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case RoboConfdslPackage.FACET__NAMEFACET:
-        return NAMEFACET_EDEFAULT == null ? namefacet != null : !NAMEFACET_EDEFAULT.equals(namefacet);
-      case RoboConfdslPackage.FACET__CHILDREN:
-        return children != null;
-      case RoboConfdslPackage.FACET__EXPORTS:
-        return EXPORTS_EDEFAULT == null ? exports != null : !EXPORTS_EDEFAULT.equals(exports);
-      case RoboConfdslPackage.FACET__EXTENDS:
-        return extends_ != null;
-    }
-    return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (namefacet: ");
-    result.append(namefacet);
-    result.append(", exports: ");
-    result.append(exports);
-    result.append(')');
-    return result.toString();
-  }
-
-} //FacetImpl
+  public boolean eIsSet(int

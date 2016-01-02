@@ -1,6 +1,7 @@
-grammar com.roboConf.RoboConfdsl with org.eclipse.xtext.common.Terminals
+grammar com.roboconf.RoboConfDsl with org.eclipse.xtext.common.Terminals
 
-generate roboConfdsl "http://www.roboConf.com/RoboConfdsl"
+generate roboConfDsl "http://www.roboconf.com/RoboConfDsl"
+
 
 Model:
 	//greetings+=Greeting*;
@@ -14,8 +15,11 @@ Model:
 //;
 
 Feature:
-	Component | Facet | Instance
+	Component | Facet | Instance | SecurityGroup
 ;
+
+
+
 //Component description
 
 Component:
@@ -26,14 +30,29 @@ Component:
 ;
 
 Propertie: 
-	Installer | Children | Exports | Imports | Facet | Extends 
+	'{propertie}' Installer | Children | Exports | Imports | Facet | Extends | Alias | Icon
+	
 	
 ;
+
+Icon:
+	'icon:' name = ID'.'extension=Extension POINT_VIRGULE
+;
+
+Extension:
+	'jpg' | 'png' | 'gif'
+;
+
+Alias:
+	'alias:' (description+=ID)+ POINT_VIRGULE
+;
+
 
 
 // TODO Extend
 Extends:
-	('extends')? ext=ID ':' propertie = [Propertie]
+	extendsValue=ID
+	((VIRGULE)otherExtends+=ID*)? POINT_VIRGULE
 ;
 
 
@@ -74,11 +93,18 @@ Facet:
 	'facet' namefacet=ID '{'
 		children = Children? &
 		exports = Exports? &
-		extends = Extends?
+		extendsFacet = Extendfacets?
 	
 	'}'
 ;
 
+Extendfacets:
+	'extends:' facets(VIRGULE facets)* POINT_VIRGULE
+;
+
+facets:
+	ID
+;
 
 // Instance Description
 
@@ -109,8 +135,6 @@ Name:
     'name:'   nameN=ID  POINT_VIRGULE
 ;
 
-
-
 ECARule:
 	'Rule' eca_rule_name = [Component] '{' 
 		(ecaproperties += ECAProperty)*
@@ -139,6 +163,55 @@ MinAllowedInstances:
 MaxAllowedInstances:
 	'maxAllowedInstances:' INT POINT_VIRGULE
 ;
+
+SecurityGroup:
+	name=ID '{'
+		description = Description &
+		ipPermissions = IpPermissions&
+		groupName = GroupName&
+		ownerID = OwnerID&
+		groupID = GroupID
+		
+	'}'
+;
+
+GroupID:
+	'groupID:' ID POINT_VIRGULE
+;
+
+
+GroupName:
+	'groupeName:' ID POINT_VIRGULE
+;
+
+
+OwnerID:
+	'ownerId:' ID POINT_VIRGULE
+;
+
+
+IpPermissions:
+	'ipPermission:' '(['
+		'{'
+		'ToPort:' ID POINT_VIRGULE
+		'IpProtocol:' STRING POINT_VIRGULE
+		'IpRanges:' '(['
+				'{'
+					'CdriIP:' ID'.'ID'.'ID'.'ID'/'ID  POINT_VIRGULE
+				'}'
+					'])'
+		
+		'FromPort:' ID POINT_VIRGULE
+		'UserIdGroupPairs:' ID'.'ID (VIRGULE ID'.'ID)* POINT_VIRGULE
+					'])'
+;
+
+
+Description:
+	'description:' ID POINT_VIRGULE
+;
+
+
 
 
 
